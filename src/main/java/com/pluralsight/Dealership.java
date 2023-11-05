@@ -9,7 +9,7 @@ public class Dealership {
     private String address;
     private String phone;
 
-    private static ArrayList<Vehicle> inventory = new ArrayList<Vehicle>();
+    static ArrayList<Vehicle> inventory = new ArrayList<Vehicle>();
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
@@ -17,21 +17,21 @@ public class Dealership {
         this.phone = phone;
     }
 
-    private static void getVehiclesByPrice(){
+    private static void getVehiclesByPrice(min, max){
     }
 
-    public static void getVehiclesByMakeModel() {
+    public static void getVehiclesByMakeModel(make, model) {
     }
 
-    public static void getVehiclesByYear() {
+    public static void getVehiclesByYear(min, max) {
     }
-    public static void getVehiclesByColor() {
-    }
-
-    public static void getVehiclesByMileage() {
+    public static void getVehiclesByColor(color) {
     }
 
-    public static void getVehiclesByType() {
+    public static void getVehiclesByMileage(min, max) {
+    }
+
+    public static void getVehiclesByType(vehicleType) {
     }
 
     public static void getAllVehicles(ArrayList<Vehicle> inventory) {
@@ -71,6 +71,6 @@ public class Dealership {
         inventory.add(new Vehicle(vin, year, make, model, type, color, odometer, price));
     }
 
-    public static void removeVehicle() {
+    public static void removeVehicle(vehicle) {
     }
 }
