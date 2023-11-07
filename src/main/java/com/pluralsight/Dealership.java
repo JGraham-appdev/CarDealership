@@ -2,75 +2,120 @@ package com.pluralsight;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Dealership {
     private String name;
     private String address;
     private String phone;
-
-    static ArrayList<Vehicle> inventory = new ArrayList<Vehicle>();
+    private ArrayList<Vehicle> inventory;
 
     public Dealership(String name, String address, String phone) {
+        this.inventory = new ArrayList<Vehicle>();
         this.name = name;
         this.address = address;
         this.phone = phone;
     }
 
-    private static void getVehiclesByPrice(min, max){
+    public String getName() {
+        return name;
     }
 
-    public static void getVehiclesByMakeModel(make, model) {
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public static void getVehiclesByYear(min, max) {
-    }
-    public static void getVehiclesByColor(color) {
-    }
-
-    public static void getVehiclesByMileage(min, max) {
+    public String getAddress() {
+        return address;
     }
 
-    public static void getVehiclesByType(vehicleType) {
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public static void getAllVehicles(ArrayList<Vehicle> inventory) {
-        for (Vehicle vehicle : inventory) {
-            System.out.println(vehicle);
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public ArrayList<Vehicle> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(ArrayList<Vehicle> inventory) {
+        this.inventory = inventory;
+    }
+
+    public List<Vehicle> getVehicleByPrice(double min,double max){
+        List<Vehicle> filteredArray = new ArrayList<Vehicle>();
+
+        for(Vehicle x:inventory){
+            if (x.getPrice()>=min && x.getPrice()<=max){
+                filteredArray.add(x);
+            }
         }
+        return filteredArray;
+    }
+    public List<Vehicle> getVehicleByMakeModel(String make, String model){
+        List<Vehicle> filteredArray = new ArrayList<>();
+
+        for(Vehicle x:inventory){
+            if (x.getMake().equalsIgnoreCase(make) || x.getModel().equalsIgnoreCase(model)){
+                filteredArray.add(x);
+            }
+        }
+        return filteredArray;
+    }
+    public List<Vehicle> getVehicleByYear(int min,int max){
+        List<Vehicle> filteredArray = new ArrayList<>();
+
+        for(Vehicle x:inventory){
+            if (x.getYear()>=min && x.getYear()<=max){
+                filteredArray.add(x);
+            }
+        }
+        return filteredArray;
+    }
+    public List<Vehicle> getVehicleByColor(String color){
+        List<Vehicle> filteredArray = new ArrayList<>();
+
+        for(Vehicle x:inventory){
+            if (x.getColor().equalsIgnoreCase(color) ){
+                filteredArray.add(x);
+            }
+        }
+        return filteredArray;
+    }
+    public List<Vehicle> getVehicleByMileage(int min, int max){
+        List<Vehicle> filteredArray = new ArrayList<>();
+
+        for(Vehicle x:inventory){
+            if (x.getOdometer()>=min && x.getOdometer()<=max){
+                filteredArray.add(x);
+            }
+        }
+        return filteredArray;
     }
 
-    public static void addVehicle(ArrayList<Vehicle> inventory) {
-        Scanner stanley = new Scanner(System.in);
+    public List<Vehicle> getVehicleByType(String type){
+        List<Vehicle> filteredArray = new ArrayList<>();
 
-        System.out.print("Enter vehicle vin: ");
-        int vin = stanley.nextInt();
-
-        System.out.print("Enter vehicle year: ");
-        int year = stanley.nextInt();
-        stanley.nextLine();
-
-        System.out.print("Enter vehicle make: ");
-        String make = stanley.nextLine();
-
-        System.out.print("Enter vehicle model: ");
-        String model = stanley.nextLine();
-
-        System.out.print("Enter vehicle type: ");
-        String type = stanley.nextLine();
-
-        System.out.print("Enter vehicle color: ");
-        String color = stanley.nextLine();
-
-        System.out.print("Enter vehicle mileage: ");
-        int odometer = stanley.nextInt();
-
-        System.out.print("Enter vehicle price: ");
-        double price = stanley.nextDouble();
-
-        inventory.add(new Vehicle(vin, year, make, model, type, color, odometer, price));
+        for(Vehicle x:inventory){
+            if (x.getVehicleType().equalsIgnoreCase(type) ){
+                filteredArray.add(x);
+            }
+        }
+        return filteredArray;
     }
-
-    public static void removeVehicle(vehicle) {
+    public List<Vehicle> getAllVehicle(){
+        return this.inventory;
+    }
+    public void addVehicle(Vehicle vehicle){
+        this.inventory.add(vehicle);
+    }
+    public void removeVehicle(Vehicle vehicle){
+        this.inventory.remove(vehicle);
     }
 }

@@ -3,10 +3,15 @@ package com.pluralsight;
 public class Vehicle {
     private int vin;
     private int year;
+
     private String make;
+
     private String model;
+
     private String vehicleType;
+
     private String color;
+
     private int odometer;
     private double price;
 
@@ -83,5 +88,19 @@ public class Vehicle {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "vin=" + vin +
+                ", year=" + year +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", vehicleType='" + vehicleType + '\'' +
+                ", color='" + color + '\'' +
+                ", odometer=" + odometer +
+                ", price=" + price +
+                '}';
     }
 }
